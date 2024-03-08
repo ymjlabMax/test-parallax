@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>신지게임스 게임소개</title>
+    <style>
+      body {
+        overflow-x: hidden;
+        background-color: #fff;
+      }
+
+      section {
+        position: relative;
+        height: 100vh;
+        width: 100vw;
+      }
+
+      section.active .imageWrap img {
+        opacity: 1;
+        visibility: visible;
+        transform: translate(0, 0);
+      }
+
+      .innerWrap {
+        position: relative;
+        z-index: 100;
+        padding: 60px;
+        width: 340px;
+        margin-top: 50px;
+        z-index: 50;
+        background-color: rgba(255, 255, 255, 0.7);
+      }
+
+      .imageWrap {
+        position: fixed;
+        width: 70%;
+        right: 5%;
+        top: 35%;
+      }
+
+      /* 왼쪽 신발 */
+      .imageWrap img {
+        position: absolute;
+        width: 300px;
+        transition: all 1s ease-in-out;
+        visibility: hidden;
+        opacity: 0;
+        transform: translate(-200px, -150px) rotate(-10deg);
+      }
+
+      /* 오른쪽 신발 */
+      .imageWrap img:nth-child(2) {
+        left: 400px;
+        top: 100px;
+        transition-delay: 0.2s;
+        transform: translate(100px, 150px) rotate(-10deg);
+      }
+
+      h1 {
+        color: #000;
+        text-align: center;
+        padding-top: 40vh;
+        font-size: 60px;
+      }
+      h2 {
+        color: #333;
+      }
+      p {
+        color: #000;
+        font-size: 16px;
+        line-height: 24px;
+      }
+
+      .pointWrap {
+        position: fixed;
+        right: 3vw;
+        top: 40%;
+        z-index: 100;
+      }
+
+      .pointWrap li {
+        list-style: none;
+        width: 12px;
+        height: 12px;
+        margin-top: 15px;
+        cursor: pointer;
+        background-color: #999;
+        border-radius: 50%;
+        transition: background 0.3s ease-out;
+      }
+
+      .pointWrap li.active {
+        background-color: #000;
+      }
+    </style>
+    <script>
+      //https://www.nike.com/kr/ko_kr/w/men/fw/lifestyle
+      window.onload = function () {
+        var section = document.getElementsByTagName("section");
+        var pointBtn = document.querySelectorAll(".pointWrap li");
+        var pageNum = 0;
+        var totalNum = section.length;
+
+        for (var i = 0; i < pointBtn.length; i++) {
+          (function (idx) {
+            pointBtn[idx].onclick = function () {
+              pageNum = idx;
+              pageChangeFunc();
+              window.scrollTo({
+                top: section[pageNum].offsetTop,
+                behavior: "smooth",
+              });
+            };
+          })(i);
+        }
+
+        //스크롤 이벤트
+        window.addEventListener("scroll", function (event) {
+          var scroll = this.scrollY;
+
+          for (var i = 0; i < totalNum; i++) {
+            if (
+              scroll > section[i].offsetTop - window.outerHeight / 1.5 &&
+              scroll <
+                section[i].offsetTop -
+                  window.outerHeight / 1.5 +
+                  section[i].offsetHeight
+            ) {
+              pageNum = i;
+              break;
+            }
+          }
+          pageChangeFunc();
+        });
+
+        //페이지 변경
+        function pageChangeFunc() {
+          for (var i = 0; i < totalNum; i++) {
+            section[i].classList.remove("active");
+            // section[i].className = "";
+            pointBtn[i].classList.remove("active");
+          }
+          section[pageNum].classList.add("active");
+          pointBtn[pageNum].classList.add("active");
+        }
+
+        //페이지 로드되면 바로 실행
+        pageChangeFunc();
+      };
+    </script>
+  </head>
+  <body>
+    <ul class="pointWrap">
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
+
+    <section>
+      <h1>게임 캐릭터 소개 데모</h1>
+    </section>
+
+    <section>
+      <div class="innerWrap">
+        <h2>1.한비광</h2>
+        <p>
+          무림 최고수 천마신군의 여섯번째 제자다. 무공에 대단한 재능을 가졌지만,
+          그런 재능이 무색하게 무림과 무공에 전혀 관심이 없었는데. 담화린과 같이
+          무림을 주유하며 점차 자신의 재능을 펼쳐나간다.
+        </p>
+      </div>
+      <div class="imageWrap">
+        <img src="./image/한비광.png" alt="한비광" />
+        <img src="./image/한비광.png" alt="한비광" />
+      </div>
+    </section>
+
+    <section>
+      <div class="innerWrap">
+        <h2>2.담화린</h2>
+        <p>
+          게임캐릭터 설명글이 필요합니다. 특별한 기술 이나 특징을 설명하는 글을
+          넣으면 됩니다.
+        </p>
+      </div>
+      <div class="imageWrap">
+        <img src="./image/담화린.png" alt="한비광" />
+        <img src="./image/담화린.png" alt="담화린" />
+      </div>
+    </section>
+    <section>
+      <div class="innerWrap">
+        <h2>3.마천휘</h2>
+        <p>
+          열혈강호의 주인공으로 이야기를 이끌어 나갑니다. 열혈강호의 주인공으로
+          이야기를 이끌어 나갑니다. 열혈강호의 주인공으로 이야기를 이끌어
+          나갑니다.
+        </p>
+      </div>
+      <div class="imageWrap">
+        <img src="./image/마천휘.png" alt="한비광" />
+        <img src="./image/마천휘.png" alt="담화린" />
+      </div>
+    </section>
+    <section>
+      <div class="innerWrap">
+        <h2>4.매유진</h2>
+        <p>
+          열혈강호의 주인공으로 이야기를 이끌어 나갑니다. 열혈강호의 주인공으로
+          이야기를 이끌어 나갑니다. 열혈강호의 주인공으로 이야기를 이끌어
+          나갑니다.
+        </p>
+      </div>
+      <div class="imageWrap">
+        <img src="./image/매유진.png" alt="한비광" />
+        <img src="./image/매유진.png" alt="담화린" />
+      </div>
+    </section>
+    <section>
+      <div class="innerWrap">
+        <h2>5.반금천</h2>
+        <p>
+          열혈강호의 주인공으로 이야기를 이끌어 나갑니다. 열혈강호의 주인공으로
+          이야기를 이끌어 나갑니다. 열혈강호의 주인공으로 이야기를 이끌어
+          나갑니다.
+        </p>
+      </div>
+      <div class="imageWrap">
+        <img src="./image/반금천.png" alt="한비광" />
+        <img src="./image/반금천.png" alt="담화린" />
+      </div>
+    </section>
+    <section>
+      <div class="innerWrap">
+        <h2>6.위지흔</h2>
+        <p>
+          열혈강호의 주인공으로 이야기를 이끌어 나갑니다. 열혈강호의 주인공으로
+          이야기를 이끌어 나갑니다. 열혈강호의 주인공으로 이야기를 이끌어
+          나갑니다.
+        </p>
+      </div>
+      <div class="imageWrap">
+        <img src="./image/위지흔.png" alt="한비광" />
+        <img src="./image/위지흔.png" alt="담화린" />
+      </div>
+    </section>
+    <section>
+      <div class="innerWrap">
+        <h2>7.자담</h2>
+        <p>
+          열혈강호의 주인공으로 이야기를 이끌어 나갑니다. 열혈강호의 주인공으로
+          이야기를 이끌어 나갑니다. 열혈강호의 주인공으로 이야기를 이끌어
+          나갑니다.
+        </p>
+      </div>
+      <div class="imageWrap">
+        <img src="./image/자담.png" alt="한비광" />
+        <img src="./image/자담.png" alt="담화린" />
+      </div>
+    </section>
+    <section>
+      <div class="innerWrap">
+        <h2>8.진풍백</h2>
+        <p>
+          열혈강호의 주인공으로 이야기를 이끌어 나갑니다. 열혈강호의 주인공으로
+          이야기를 이끌어 나갑니다. 열혈강호의 주인공으로 이야기를 이끌어
+          나갑니다.
+        </p>
+      </div>
+      <div class="imageWrap">
+        <img src="./image/진풍백.png" alt="한비광" />
+        <img src="./image/진풍백.png" alt="담화린" />
+      </div>
+    </section>
+  </body>
+</html>
