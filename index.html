@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>신지게임즈</title>
+    <style>
+      body {
+        overflow-x: hidden;
+        background-color: #000;
+      }
+
+      section {
+        position: relative;
+        height: 100vh;
+        width: 100vw;
+        /* border-top: 1px dashed #333; */
+      }
+
+      /* 본문 */
+      section .innerWrap {
+        position: relative;
+        z-index: 100;
+        padding: 120px;
+        width: 340px;
+        margin-top: 50px;
+      }
+
+      /* 이미지 영역 활성 */
+      section.active .image {
+        opacity: 1;
+      }
+
+      /* 이미지 */
+      section .image {
+        position: fixed;
+        width: 100%;
+        right: -10%;
+        top: 22%;
+        opacity: 0;
+        transition: opacity 1s ease-in-out;
+      }
+
+      h1 {
+        color: #fff;
+        text-align: center;
+        margin-top: 40vh;
+        font-size: 60px;
+      }
+      h2 {
+        color: #fff;
+      }
+      p {
+        color: #fff;
+        font-size: 16px;
+        line-height: 24px;
+      }
+    </style>
+    <script>
+      window.onload = function () {
+        var section = document.getElementsByTagName("section");
+        var pageNum = 0;
+        var totalNum = section.length;
+
+        //스크롤 이벤트
+        window.addEventListener("scroll", function (event) {
+          var scroll = this.scrollY;
+
+          for (var i = 0; i < totalNum; i++) {
+            if (
+              scroll > section[i].offsetTop - window.outerHeight / 1.5 &&
+              scroll <
+                section[i].offsetTop -
+                  window.outerHeight / 1.5 +
+                  section[i].offsetHeight
+            ) {
+              pageNum = i;
+              break;
+            }
+          }
+          pageChangeFunc();
+        });
+
+        //페이지 변경
+        function pageChangeFunc() {
+          for (var i = 0; i < totalNum; i++) {
+            section[i].classList.remove("active");
+            // section[i].className = "";
+          }
+          section[pageNum].classList.add("active");
+        }
+
+        //페이지 로드되면 바로 실행
+        pageChangeFunc();
+      };
+    </script>
+  </head>
+  <body>
+    <section>
+      <h1>신지게임즈 홈페이지 데모 - 1</h1>
+    </section>
+
+    <section>
+      <div class="innerWrap">
+        <h2>회사 소개</h2>
+        <p>
+          신지게임즈 소개글 신지게임즈 소개글신지게임즈 소개글신지게임즈
+          소개글신지게임즈 소개글신지게임즈 소개글신지게임즈 소개글신지게임즈
+          소개글신지게임즈 소개글신지게임즈 소개글신지게임즈 소개글신지게임즈
+          소개글신지게임즈 소개글신지게임즈 소개글신지게임즈 소개글신지게임즈
+          소개글신지게임즈 소개글신지게임즈 소개글
+        </p>
+      </div>
+      <img src="./image/anme1.png" class="image" alt="" />
+    </section>
+
+    <section>
+      <div class="innerWrap">
+        <h2>page 2</h2>
+        <p>
+          한 사람들의 멀리 추억과 까닭입니다. 그리워 이름자 별 위에 이런 당신은
+          별들을 까닭입니다. 밤이 다 차 파란 시와 버리었습니다. 속의 못 별에도
+          별들을 멀리 릴케 봅니다. 하늘에는 소녀들의 이름자 것은 속의 나의
+          까닭이요, 듯합니다. 패, 이름을 이름자 보고, 별 비둘기, 언덕 마디씩
+          가득 봅니다. 프랑시스 계절이 많은 하나에 이런 까닭이요, 까닭입니다.
+          이국 옥 부끄러운 나는 하나의 겨울이 이름과, 피어나듯이 멀듯이,
+          까닭입니다. 부끄러운 시인의 차 이네들은 새워 무성할 하나에 나는
+          있습니다. 사랑과 못 나는 차 이국 까닭입니다.
+        </p>
+      </div>
+      <img src="./image/anme2.png" class="image" alt="" />
+    </section>
+
+    <section>
+      <div class="innerWrap">
+        <h2>page 3</h2>
+        <p>
+          이런 덮어 아무 마디씩 이름과, 하나에 별들을 딴은 멀리 듯합니다.
+          계집애들의 아스라히 헤일 계십니다. 때 했던 어머님, 하나 별 경, 봅니다.
+          불러 별에도 헤일 별 라이너 오면 봅니다. 묻힌 못 소학교 까닭입니다.
+          자랑처럼 벌써 나의 소녀들의 지나고 까닭입니다. 써 쉬이 나는 이름자 다
+          노루, 이름과, 이름과, 봅니다. 나의 한 하나에 봅니다. 별 프랑시스 딴은
+          애기 지나고 마디씩 이름자를 언덕 자랑처럼 봅니다. 오면 파란 비둘기,
+          노새, 있습니다.
+        </p>
+      </div>
+      <img src="./image/anme3.png" class="image" alt="" />
+    </section>
+  </body>
+</html>
