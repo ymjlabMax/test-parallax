@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>신지게임즈-데모</title>
+    <style>
+      body {
+        overflow-x: hidden;
+      }
+
+      section {
+        position: relative;
+        height: 100vh;
+        width: 100vw;
+        /* border-top: 1px dashed #333; */
+      }
+
+      /* 본문 */
+    </style>
+    <script>
+      window.onload = function () {
+        var section = document.getElementsByTagName("section");
+        var pageNum = 0;
+        var totalNum = section.length;
+
+        //스크롤 이벤트
+        window.addEventListener("scroll", function (event) {
+          var scroll = this.scrollY;
+
+          for (var i = 0; i < totalNum; i++) {
+            if (
+              scroll > section[i].offsetTop - window.outerHeight / 1.5 &&
+              scroll <
+                section[i].offsetTop -
+                  window.outerHeight / 1.5 +
+                  section[i].offsetHeight
+            ) {
+              pageNum = i;
+              break;
+            }
+          }
+          pageChangeFunc();
+        });
+
+        //페이지 변경
+        function pageChangeFunc() {
+          for (var i = 0; i < totalNum; i++) {
+            section[i].classList.remove("active");
+            // section[i].className = "";
+          }
+          section[pageNum].classList.add("active");
+        }
+
+        //페이지 로드되면 바로 실행
+        pageChangeFunc();
+      };
+    </script>
+  </head>
+  <body>
+    <section class=>
+      <div></div>
+      <div></div>
+    </section>
+
+
+  </body>
+</html>
