@@ -11,8 +11,6 @@ export default function MainBanner() {
     let pageNum = 0;
     let totalNum = section.length;
 
-    console.log("===>", totalNum);
-
     window.addEventListener("scroll", (event) => {
       let scroll = window.scrollY;
 
@@ -54,25 +52,25 @@ export default function MainBanner() {
         return (
           <section
             key={idx}
-            className=" w-full h-screen sectionBox opacity-0 duration-500"
+            className=" w-full h-screen sectionBox opacity-100 bg-slate-950 duration-500"
           >
-            <div className="fixed top-0 w-full h-full duration-500">
-              <div className="w-full h-full flex">
-                <div className="flex-1 duration-500 ">
+            <div className="fixed top-0 w-full h-full bg-slate-950">
+              <div className="w-full h-full flex bg-slate-950">
+                <div className="flex-1 bg-slate-950 ">
                   <Image
-                    className="w-full h-full"
+                    className="w-full h-full bg-slate-950"
                     src={el.img}
                     width={500}
                     height={900}
                     alt="데모그림"
                   />
                 </div>
-                <div className="flex-1 flex items-center justify-center">
+                {/* <div className="flex-1 flex items-center justify-center">
                   <div>
                     <h3 className="text-[60px]">{el.title}</h3>
                     <p>{el.contents}</p>
                   </div>
-                </div>
+                </div> */}
               </div>
             </div>
           </section>
